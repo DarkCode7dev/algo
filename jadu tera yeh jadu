@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+class test{
+public static void main(String [] args){
+Scanner sc = new Scanner(System.in);
+int R=sc.nextInt();
+int C=sc.nextInt();
+int f=0;
+int a[][]=new int[R][C];
+for(int i=0;i<R;i++)
+for(int j=0;j<C;j++)
+ a[i][j]=sc.nextInt();
+
+int []a1=new int[R];
+int []a2=new int[C];
+int s1=0,s2=0,s3=0,s4=0;
+for(int j=0;j<R;j++)
+{s1=0;
+for(int i=0;i<C;i++)
+{
+  s1=s1+a[j][i];
+  a1[j]=s1;
+}}
+for(int j=0;j<R;j++){
+for(int i=0;i<C;i++)
+{
+ s2=s2+a[i][j];
+ a2[j]=s2;
+}
+}
+for(int i=0;i<R;i++){
+s3=s3+a[i][i];
+s4=s4+a[i][R-1-i];}
+for(int i=0;i<R;i++){
+if(s3==s4 || a1[0]!=a1[i] || a2[0]!=a2[i] || a1[0]!=a2[0])
+System.out.println("NO MAGIC");
+f=1;
+ break;
+}
+ if(f==0)
+{System.out.println("ITS A MAGIC!");}
+
+}}
