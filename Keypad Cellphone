@@ -1,0 +1,29 @@
+import java.util.Scanner;
+class test{
+public static void main(String []args){
+Scanner sc = new Scanner(System.in);
+String s=sc.nextLine();
+int c=0;
+for(int i=0;i<s.length();i++)
+{
+    
+ if(s.charAt(i)=='a' || s.charAt(i)=='d' || s.charAt(i)=='g' || s.charAt(i)=='j' || s.charAt(i)=='m' || s.charAt(i)=='p' || s.charAt(i)=='t' || s.charAt(i)=='w')
+   c++;
+
+if(s.charAt(i)=='b' || s.charAt(i)=='e' || s.charAt(i)=='h' || s.charAt(i)=='k' || s.charAt(i)=='n' || s.charAt(i)=='q' || s.charAt(i)=='u' || s.charAt(i)=='x')
+   c=c+2;
+
+if(s.charAt(i)=='c' || s.charAt(i)=='f' || s.charAt(i)=='i' || s.charAt(i)=='l' || s.charAt(i)=='o' || s.charAt(i)=='r' || s.charAt(i)=='v' || s.charAt(i)=='y')
+   c=c+3;
+
+if(s.charAt(i)=='s' || s.charAt(i)=='z')
+   c=c+4;
+
+
+if(s.charAt(i)==' ')
+   c++;
+}
+
+System.out.println(c);
+}
+}
