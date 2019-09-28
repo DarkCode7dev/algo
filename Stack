@@ -1,0 +1,40 @@
+import java.util.Scanner;
+public class Stack1 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+
+        int top=0,ch=0;
+        int [] Stack1= new int[5];
+
+        while (ch!=4)
+        {
+            System.out.println("==========================================");
+            System.out.println("Stack operation");
+            System.out.println("1.Push  2.Pop    3.Peek    4.Exit");
+            System.out.println("Enter your choice");
+             ch=sc.nextInt();
+             switch(ch)
+             {
+                 case 1: if(top==4)System.out.println("Stack is full");
+                 else{
+                     System.out.println("Enter Data:");
+                     Stack1[++top]=sc.nextInt();
+                 } break;
+                 case 2: if(top==-1) System.out.println("Stack is Empty");
+                 else{
+                     System.out.println("Pop Element" + " " + Stack1[top]);
+                     top--;
+                 } break;
+                 case 3 : if(top==-1)
+                     System.out.println("Stack is Empty");
+                 else{
+                     System.out.println("Peek Element" + " " + Stack1[top]);
+                 }break;
+                 default: System.out.println("Exit");
+
+             }
+        }
+
+
+    }
+}
