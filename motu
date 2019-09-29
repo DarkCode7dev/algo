@@ -1,0 +1,24 @@
+import java.util.*;
+class test{
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s=sc.nextLine();
+        boolean isFound = s.indexOf("1") !=-1? true: false;
+        
+        if(isFound==true)
+        {
+            String []stArray=s.split("0");
+            int [] n= new int[stArray.length];
+            for(int i=0;i<stArray.length;i++)
+            {
+                n[i]=(stArray[i]).length();
+            }
+            java.util.Arrays.sort(n);
+        
+            System.out.println(n[(n.length)-1]);
+        }
+        if(isFound==false)
+            System.out.println(-1);
+        
+    }
+}
