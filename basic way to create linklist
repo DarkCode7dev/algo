@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<conio.h>
+#include<cstdlib>
+int main()
+{
+	struct node
+{
+	int data;
+	struct node * next;
+};
+	//initialize node
+	struct node *head;
+	struct node *one = NULL;
+	struct node *two = NULL;
+	struct node *three = NULL;
+	
+	// allocate memory
+	one = (struct node *)malloc(sizeof(struct node));
+	two = (struct node *)malloc(sizeof(struct node));
+	three = (struct node *)malloc(sizeof(struct node));
+	
+	//assign data values
+	one->data=1;
+	two->data=2;
+	three->data=3;
+	
+	//connect node
+	one->next = two;
+	two->next =three;
+	three->next = NULL;
+	
+	head=one;
+	printf("%d",one->data);
+		printf("%d",two->data);
+		printf("%d",three->data);
+	return 0;
+}
