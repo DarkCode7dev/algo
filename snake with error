@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int N = sc.nextInt();
+		int []m=new int[N];
+		int []t=new int[N];
+		int c=0;
+		for(int i=0;i<N;i++)
+		{
+		    m[i]=sc.nextInt();
+		     t[i]=sc.nextInt();
+		}
+		int M=sc.nextInt();
+		int []d=new int[M];
+		for(int i=0;i<M;i++)
+		 d[i]=sc.nextInt();
+		 int k=0;
+		 for(int i=0;i<M;i++)
+		 {
+		     c=c+d[i];
+		     if(c==m[k])
+		     {
+		         c=t[k];
+		         k++;
+		     }
+		 }
+		 
+
+
+		 
+		 
+		
+	}
+}
