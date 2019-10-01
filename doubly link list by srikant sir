@@ -1,0 +1,184 @@
+#include<stdio.h>
+struct node
+{
+  struct node *n,*p;
+  int info;
+};
+main()
+{
+struct node *first=NULL;
+struct node* create(struct node*);
+struct node* del(struct node *, int);
+struct node* insert(struct  node*,int);
+void display(struct node*);
+int ch,x,key,R;
+first=create(first);
+display(first);
+do
+{
+  printf("\nThe Operations on Linked List");
+  printf("1........Insert\n");
+  printf("2........Delete\n");
+  printf("3........Display\n");
+  printf("4........Exit\n");
+  printf("\nEnter your choice :\n");
+  scanf("%d",&ch);
+  switch(ch)
+     	{
+	   	case 1:
+			{
+			  printf("\nAfter which value you want to insert, If not found it will insert as last value");
+			 scanf("%d",&key);
+			 first=insert(first,key);
+			 break;	
+			}
+		case 2:
+			{
+			  printf("\nEnter the value to be deleted");
+			 scanf("%d",&key);
+			 first=del(first,key);
+			 break;			
+			}
+		case 3:
+			{
+			  display(first);
+			  break;		
+			}	
+		case 4:
+			{
+			 exit(1);	
+			}
+		default:
+			break;
+	}
+printf("\nDo you want to continue:");
+scanf("%d",&R);
+}while(R!=0);
+}
+
+//create function 
+
+struct node* create(struct node *first)
+{
+struct node *temp,*last;
+int x,ch;
+do
+{
+printf("Enter the info");
+scanf("%d",&x);
+temp=malloc(sizeof(struct node));
+temp->info=x;
+temp->p=NULL;
+temp->n=NULL;
+if(first==NULL)
+{
+first=temp;
+last=temp;
+}
+else
+{
+last->n=temp;
+temp->p=last;
+last=temp;
+}
+printf("want to continue");
+scanf("%d",&ch);
+}while(ch!=0);
+return(first);
+}
+//Display
+
+void display(struct node *first)
+{
+struct node *temp;
+if(first==NULL)
+{
+printf("No list");
+}
+else
+{
+temp=first;
+while(temp!=NULL)
+{
+printf("|%u|%d|%u|-->",temp->p,temp->info,temp->n);
+temp=temp->n;
+}
+}
+}
+
+//Insert 
+
+struct node* insert(struct node *first, int key)
+{
+struct node *temp,*new_node;
+new_node=malloc(sizeof(struct node));
+printf("Enter the info");
+scanf("%d",&new_node->info);
+new_node->p=NULL;
+new_node->n=NULL;
+if(first==NULL)
+{
+printf("List is empty calling create function");
+first=create(first);
+}
+else
+{
+temp=first;
+while((temp->n!=NULL)&&(temp->info!=key))
+{
+temp=temp->n;
+}
+if(temp->n!=NULL)
+{
+new_node->n=temp->n;
+temp->n=new_node;
+new_node->p=temp;
+new_node->n->p=new_node;
+}
+else
+{
+temp->n=new_node;
+new_node->p=temp;
+}
+}
+return(first);
+}
+
+struct node* del( struct node *first, int key)
+{
+   struct node *temp;
+   if (first == NULL)
+      {
+         printf("No list in the memory");
+         return (first);
+       }
+    temp= first;
+     while((temp!=NULL)&&(temp->info!=key))
+             {
+                temp=temp->n;
+             }
+        if (temp ==NULL)
+             {
+                printf("Key Not Found");
+                return(first);
+               }
+         else
+               {
+                  if (temp==first)
+                           {
+                            first=first->n;
+                            free(temp);
+                            return(first);
+                            }    
+                  else
+                           {
+                                temp->p->n=temp->n;
+                                if(temp->n!=NULL)
+                                {
+                                temp->n->p= temp->p;
+                                }
+                                free (temp);
+                                return(first);
+                             }
+                    }
+}
