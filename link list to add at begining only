@@ -1,0 +1,45 @@
+#include<stdlib.h>
+#include<stdio.h>
+ struct Node{
+ 	int data;
+ 	struct Node* next;
+ };
+ //pointer to node, to store address of first node (declaring it globally)
+ struct Node* head;//global
+ 
+ void Insert(int x){
+ 	struct Node* temp=(Node*)malloc(sizeof(struct Node));//creating node using malloc
+ 	 temp->data=x;//(*temp).data= x;//dereferencing to acesss field of nodes (data part)
+ 	 temp->next=head;//dereferencing pointer variable to modify the value at particular node
+	  head=temp; 
+ }
+ void Print(){
+struct Node* temp = head;//local variable pointer to node
+printf("List is: ");
+
+while(temp != NULL)//traverse the linklist
+{    
+    printf("%d",temp->data);//at each stage print value
+	temp=temp->next;//keep going to the next node
+	
+
+  }
+  printf("/n");
+}
+
+ int main(){
+ 	head=NULL; //this pointer variable points nowhere
+ 	printf("How many number?\n");
+ 	int n,i,x;
+ 	scanf("%d",&n);
+ 	
+ 	for(i=0;i<n;i++)
+ 	{
+ 		printf("Enter the number\n");
+ 		scanf("%d",&x);
+ 		Insert(x);
+ 		Print();
+ 		
+ 		
+	 }
+ }
